@@ -1,2 +1,0 @@
-cursor.execute(f"INSERT INTO {table} (id, song_name, artist, album, release_date, popularity) VALUES (?, ?, ?, ?, ?, ?)", (song_id, song_name, artist, album, release_date, popularity))
-        conn.commit()

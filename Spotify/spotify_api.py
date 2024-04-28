@@ -47,21 +47,6 @@ def add_position_to_json(json):
         json["tracks"]["items"][i]["position"] = i + 1
     return json
 
-# # #create billboaard table with id, song_name, artist, album, release_date, and popularity
-# def setup_billboard_table():
-#     conn = sqlite3.connect("spotify.db")
-#     cursor = conn.cursor()
-#     cursor.execute("CREATE TABLE IF NOT EXISTS billboard_100 (id INTEGER, song_name TEXT, artist TEXT, album TEXT, release_date TEXT, popularity INTEGER)")
-#     conn.commit()
-#     conn.close()
-
-# def insert_data(conn, cursor, table):
-#     conn = sqlite3.connect("spotify.db")
-#     cursor = conn.cursor()
-#     length_table = cursor.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
-#     print(length_table)
-#     conn.commit()
-#     conn.close()
 
 def setup_billboard_table():
     conn = sqlite3.connect("spotify.db")
@@ -77,21 +62,7 @@ def setup_daily_chart_table():
     conn.commit()
     conn.close()
 
-# def insert_data(conn, cursor, table):
-#     length_table = cursor.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
-#     #insert a song into the table
-#     data = add_position_to_json(get_billboard_100(get_token()))
-#     for i in range(len(data["tracks"]["items"])):
-#         song = data["tracks"]["items"][i]["track"]
-#         song_id = data["tracks"]["items"][i]["position"]
-#         print(song_id)
-#         song_name = song["name"]
-#         artist = song["artists"][0]["name"]
-#         album = song["album"]["name"]
-#         release_date = song["album"]["release_date"]
-#         popularity = song["popularity"]
-#         cursor.execute(f"INSERT INTO {table} (id, song_name, artist, album, release_date, popularity) VALUES (?, ?, ?, ?, ?, ?)", (song_id, song_name, artist, album, release_date, popularity))
-#         conn.commit()
+
 
 def insert_25_tracks(conn, cursor):
     length_BB = cursor.execute(f"SELECT COUNT(*) FROM billboard_100").fetchone()[0]
@@ -135,13 +106,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-
-# def setup_daily_chart_table():
-#     conn = sqlite3.connect("spotify.db")
-#     cursor = conn.cursor()
-#     cursor.execute("CREATE TABLE IF NOT EXISTS daily_chart (id INTEGER, song_name TEXT, artist TEXT, album TEXT, release_date TEXT, popularity INTEGER)")
-#     conn.commit()
-#     conn.close()
-
-# def insert_database(conn, cursor, table, data):
