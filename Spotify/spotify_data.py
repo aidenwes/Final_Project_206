@@ -1,4 +1,4 @@
-from dotenv import load_dotenv
+
 import os
 import requests
 import base64
@@ -6,13 +6,12 @@ from requests import post, get
 import json
 import sqlite3
 
-load_dotenv()
 
-client_id = os.getenv("CLIENT_ID")
-client_secret = os.getenv("CLIENT_SECRET")
+CLIENT_ID = "eeee49cf4d3e434988195059e514534b"
+CLIENT_SECRET = "2975c2b65cbb4f7e9ab02e378093f959"
 
 def get_token():
-    auth_string = client_id + ":" + client_secret
+    auth_string = CLIENT_ID + ":" + CLIENT_SECRET
     auth_bytes = auth_string.encode("utf-8")
     auth_base64 = str(base64.b64encode(auth_bytes), "utf-8")
 
